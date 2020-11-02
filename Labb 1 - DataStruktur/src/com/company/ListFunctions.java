@@ -29,12 +29,15 @@ public class ListFunctions <E> {
         newNode.value = value;
         newNode.next = null;
         int i = 0;
-        Node<E> last = head;
+        Node<E> current = head;
+        Node<E> next = null;
         while(i < index-1) {
-            last = last.next;
+            current = current.next;
+            next = current.next;
             i++;
         }
-        last.next = newNode;
+        current.next = newNode;
+        newNode.next = next;
     }
 
     public void remove(int i) {
