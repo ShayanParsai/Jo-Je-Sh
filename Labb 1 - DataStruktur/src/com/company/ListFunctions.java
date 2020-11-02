@@ -2,32 +2,30 @@ package com.company;
 
 public class ListFunctions <E> {
 
-    static class Node <E> {
-        protected E value;
-        protected Node<E> next;
+    private static class Node <E> {
+        E value;
+        Node<E> next;
+
+        Node(E value) {
+            this.value = value;
+        }
     }
 
     private Node<E> head;
 
     public void add(E value) {
-        Node<E> newNode = new Node<>();
-        newNode.value = value;
-        newNode.next = null;
         if (head == null) {
-            head = newNode;
+            head = new Node<>(value);
         } else {
-            Node<E> last = head;
-            while(last.next !=null) {
-                last = last.next;
+            Node<E> current = head;
+            while(current.next !=null) {
+                current = current.next;
             }
-            last.next = newNode;
+            current.next = new Node<>(value);
         }
     }
 
     public void add(int index, E value) {
-        Node<E> newNode = new Node<>();
-        newNode.value = value;
-        newNode.next = null;
         int i = 0;
         Node<E> current = head;
         Node<E> next = null;
@@ -36,6 +34,7 @@ public class ListFunctions <E> {
             next = current.next;
             i++;
         }
+        Node<E> newNode = new Node<>(value);
         current.next = newNode;
         newNode.next = next;
     }
@@ -46,24 +45,24 @@ public class ListFunctions <E> {
 
     public E get(int index) {
         int i = 0;
-        Node<E> last = head;
+        Node<E> current = head;
         while (i < index){
-            last = last.next;
+            current = current.next;
             i++;
         }
-        return last.value;
+        return current.value;
     }
 
     public boolean contains(E value) {
         boolean doesContain = false;
-        Node<E> last = head;
-        while (last.next != null) {
+        Node<E> current = head;
+        while (current.next != null) {
 
-            if (value.equals(last.value)){
+            if (value.equals(current.value)){
                 doesContain = true;
                 break;
             }
-            last = last.next;
+            current = current.next;
 
         } return doesContain;
     }
@@ -72,10 +71,10 @@ public class ListFunctions <E> {
         if (head == null) {
             return 0;
         }
-        Node<E> last = head;
+        Node<E> current = head;
         int tempValue = 0;
-        while(last.next !=null) {
-            last = last.next;
+        while(current.next !=null) {
+            current = current.next;
             tempValue ++;
         }
         return tempValue + 1;
