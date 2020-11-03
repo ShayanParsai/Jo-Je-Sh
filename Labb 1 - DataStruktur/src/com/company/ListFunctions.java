@@ -26,6 +26,9 @@ public class ListFunctions <E> {
     }
 
     public void add(int index, E value) {
+        if (index < 0 || index >= size())
+            throw new IndexOutOfBoundsException();
+
         if (index == 0) {
             Node<E> temp = head;
             head = new Node<>(value);
@@ -46,14 +49,28 @@ public class ListFunctions <E> {
     }
 
     public void remove(int index) {
+        if (index < 0 || index >= size())
+            throw new IndexOutOfBoundsException();
+
         if (index == 0) {
             head = head.next;
             return;
         }
-
+        int i = 0;
+        Node<E> previous = null;
+        Node<E> current = head;
+        while(i < index) {
+            previous = current;
+            current = current.next;
+            i++;
+        }
+        previous.next = current.next;
     }
 
     public E get(int index) {
+        if (index < 0 || index >= size())
+            throw new IndexOutOfBoundsException();
+
         int i = 0;
         Node<E> current = head;
         while (i < index){
@@ -67,14 +84,14 @@ public class ListFunctions <E> {
         boolean doesContain = false;
         Node<E> current = head;
         while (current.next != null) {
-
             if (value.equals(current.value)){
                 doesContain = true;
                 break;
             }
             current = current.next;
 
-        } return doesContain;
+        }
+        return doesContain;
     }
 
     public int size() {
