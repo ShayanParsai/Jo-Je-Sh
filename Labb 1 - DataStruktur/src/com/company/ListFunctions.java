@@ -26,9 +26,15 @@ public class ListFunctions <E> {
     }
 
     public void add(int index, E value) {
+        if (index == 0) {
+            Node<E> temp = head;
+            head = new Node<>(value);
+            head.next = temp;
+            return;
+        }
         int i = 0;
         Node<E> current = head;
-        Node<E> next = null;
+        Node<E> next = head.next;
         while(i < index-1) {
             current = current.next;
             next = current.next;
@@ -39,7 +45,11 @@ public class ListFunctions <E> {
         newNode.next = next;
     }
 
-    public void remove(int i) {
+    public void remove(int index) {
+        if (index == 0) {
+            head = head.next;
+            return;
+        }
 
     }
 
