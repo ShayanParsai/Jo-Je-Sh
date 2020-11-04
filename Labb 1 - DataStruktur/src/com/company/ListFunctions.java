@@ -83,13 +83,12 @@ public class ListFunctions <E> {
     public boolean contains(E value) {
         boolean doesContain = false;
         Node<E> current = head;
-        while (current.next != null) {
+        while (current != null) {
             if (value.equals(current.value)){
                 doesContain = true;
                 break;
             }
             current = current.next;
-
         }
         return doesContain;
     }
