@@ -1,13 +1,22 @@
 package com.company;
 
 public class Queue<E> {
-    private final ListFunctions<E> linkedlist;
-    public Queue (ListFunctions<E> source){
+
+    private final LinkedList<E> linkedlist;
+
+    public Queue() {
+        linkedlist = new LinkedList<>();
+    }
+    public Queue (LinkedList<E> source){
         linkedlist = source;
     }
 
     public void enqueue(E e) {
-    linkedlist.add(0,e);
+        if (linkedlist.size() > 0) {
+            linkedlist.add(0,e);
+        }else {
+            linkedlist.add(e);
+        }
     }
 
     public E dequeue() {
@@ -17,8 +26,8 @@ public class Queue<E> {
         return value;
     }
 
-    public E quePeek() {
-        int dequeueIndex = (linkedlist.size()-1);
-        return linkedlist.get(dequeueIndex);
+    public E peek() {
+        int peekIndex = (linkedlist.size()-1);
+        return linkedlist.get(peekIndex);
     }
 }
