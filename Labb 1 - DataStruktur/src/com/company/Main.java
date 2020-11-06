@@ -8,12 +8,23 @@ public class Main {
         Main main = new Main();
         ListFunctions<Integer> list = new ListFunctions<>();
         Scanner sc = new Scanner(System.in);
-        boolean loop = true;
+        boolean loop = false;
 
         for (int i = 0; i < 10; i++){
             list.add(i);
         }
+         Queue<Integer> que = new Queue<>(list);
 
+
+        que.dequeue();
+        que.enqueue(15);
+        que.enqueue(42);
+        que.dequeue();
+        System.out.println(que.quePeek());
+
+        for (int i = 0; i < list.size(); i++) {
+            System.out.print(list.get(i) + " -> ");
+        }
         System.out.println("\nLinked list handler\nThe list starts with 10 nodes, with the values 0-9\n");
 
         while (loop){

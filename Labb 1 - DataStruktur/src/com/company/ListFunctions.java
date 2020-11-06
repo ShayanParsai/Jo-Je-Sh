@@ -126,15 +126,5 @@ public class ListFunctions <E> {
 
     // ========== Que functions =============== //
 
-    public void enqueue(int i) {
 
-    }
-
-    public void dequeue() {
-
-    }
-
-    public void quePeek() {
-
-    }
 }
